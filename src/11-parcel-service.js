@@ -51,22 +51,55 @@
  *   convertToString(42)                   // => "42"
  *   stringToChars("Dak")                  // => ["D", "a", "k"]
  */
+
 export function parcelToJSON(parcel) {
-  // Your code here
+  if (typeof parcel === "undefined") {
+    return "";
+  }
+
+  let parcel_string;
+  try {
+    parcel_string = JSON.stringify(parcel);
+  }
+  catch {
+    parcel_string = "";
+  }
+  return parcel_string;
 }
 
 export function jsonToParcel(jsonString) {
-  // Your code here
+  if (typeof jsonString !== "string") {
+    return null;
+  }
+
+  let jsonResult;
+
+  try{
+    jsonResult = JSON.parse(jsonString);
+  }
+  catch {
+    jsonResult = null;
+  }
+
+  return jsonResult;
 }
 
 export function convertToString(value) {
-  // Your code here
+  return String(value);
 }
 
 export function convertToNumber(value) {
-  // Your code here
+  if (Number.isNaN(value)) {
+    return NaN;
+  }
+
+  return Number(value);
 }
 
 export function stringToChars(str) {
-  // Your code here
+  if (typeof str !== "string") {
+    return [];
+  }
+
+  return Array.from(str);
 }
